@@ -13,3 +13,4 @@ def test_add_block():
     blockchain.add_block(data)
 
     assert blockchain.chain[-1].data == data
+
