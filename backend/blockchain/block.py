@@ -39,6 +39,9 @@ class Block:
             f'Nonce: {self.nonce},'
         )
 
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
     @staticmethod
     def mine_block(last_block, data):
         """
@@ -113,9 +116,9 @@ class Block:
             block.nonce
         )
 
-        print(block)
-        print(reconstructed_hash)
-        print(last_block)
+        # print(block)
+        # print(last_block)
+        # print(reconstructed_hash)
         if block.hash != reconstructed_hash:
             raise Exception("The block hash must be correct")
 
@@ -124,8 +127,8 @@ def main():
     genesis_block = Block.genesis()
     # last_block = Block(genesis_block, '', '', '', 3, 1)
     block = Block.mine_block(genesis_block, 'test_data')
-    print(genesis_block)
-    print(block)
+    # print(genesis_block)
+    # print(block)
     Block.is_valid_block(genesis_block, block)
 
 

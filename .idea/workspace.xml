@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a728c139-dc6d-46f4-97b6-56e024589060" name="Default Changelist" comment="Implement basic Proof of Work functionality.">
+    <list default="true" id="a728c139-dc6d-46f4-97b6-56e024589060" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/blockchain/block.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/blockchain/block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/tests/blockchain/test_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/tests/blockchain/test_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/blockchain/blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/blockchain/blockchain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/tests/blockchain/test_blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/tests/blockchain/test_blockchain.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +186,8 @@
       <workItem from="1574722272781" duration="6384000" />
       <workItem from="1574738576155" duration="38000" />
       <workItem from="1575312764173" duration="8255000" />
-      <workItem from="1575395292537" duration="5779000" />
+      <workItem from="1575395292537" duration="6754000" />
+      <workItem from="1575408811675" duration="1906000" />
     </task>
     <task id="LOCAL−00001" summary="Implement basic Proof of Work functionality.">
       <created>1575323078778</created>
@@ -193,7 +195,13 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1575323078779</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Add block validation with tests.">
+      <created>1575401139556</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1575401139556</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,13 +222,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implement basic Proof of Work functionality." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement basic Proof of Work functionality." />
+    <MESSAGE value="Add block validation with tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add block validation with tests." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Cryptocurrency$pytest_for_backend.coverage" NAME="pytest for backend.tests Coverage Results" MODIFIED="1575323001682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Cryptocurrency$hex_to_binary.coverage" NAME="hex_to_binary Coverage Results" MODIFIED="1575322422104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/tests/util" />
     <SUITE FILE_PATH="coverage/Cryptocurrency$average_block_rate.coverage" NAME="average_block_rate Coverage Results" MODIFIED="1575322586711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/scripts" />
-    <SUITE FILE_PATH="coverage/Cryptocurrency$pytest_for_backend_tests.coverage" NAME="pytest for backend.tests Coverage Results" MODIFIED="1575401080344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Cryptocurrency$pytest_for_backend_tests.coverage" NAME="pytest for backend.tests Coverage Results" MODIFIED="1575410724072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Cryptocurrency$block.coverage" NAME="block Coverage Results" MODIFIED="1575400127944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/blockchain" />
   </component>
 </project>
