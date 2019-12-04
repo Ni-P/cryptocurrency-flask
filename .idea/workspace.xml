@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a728c139-dc6d-46f4-97b6-56e024589060" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/pubsub.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/blockchain/block.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/blockchain/block.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/blockchain/blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/blockchain/blockchain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/tests/blockchain/test_blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/tests/blockchain/test_blockchain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +28,7 @@
   </component>
   <component name="ProjectId" id="1URHz4YNTNgbQdHE89Ub1qajOFC" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -37,6 +41,7 @@
     <property name="nodejs.protractor.protractor_package" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -60,7 +65,53 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for backend.tests">
+  <component name="RunManager" selected="Python.app PEER">
+    <configuration name="app PEER" type="PythonConfigurationType" factoryName="Python" singleton="false">
+      <module name="Cryptocurrency" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="PEER" value="True" />
+      </envs>
+      <option name="SDK_HOME" value="C:\projects\PyCharm\Cryptocurrency\venv-alt\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="backend.app" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python">
+      <module name="Cryptocurrency" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="PEER" value="False" />
+      </envs>
+      <option name="SDK_HOME" value="C:\projects\PyCharm\Cryptocurrency\venv-alt\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="backend.app" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="average_block_rate" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Cryptocurrency" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -160,6 +211,8 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.app" />
+      <item itemvalue="Python.app PEER" />
       <item itemvalue="Python.block" />
       <item itemvalue="Python.average_block_rate" />
       <item itemvalue="Python.hex_to_binary" />
@@ -187,7 +240,8 @@
       <workItem from="1574738576155" duration="38000" />
       <workItem from="1575312764173" duration="8255000" />
       <workItem from="1575395292537" duration="6754000" />
-      <workItem from="1575408811675" duration="1906000" />
+      <workItem from="1575408811675" duration="2008000" />
+      <workItem from="1575481414868" duration="7225000" />
     </task>
     <task id="LOCAL−00001" summary="Implement basic Proof of Work functionality.">
       <created>1575323078778</created>
@@ -201,7 +255,13 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1575401139556</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Add chain replacement with validation and tests.">
+      <created>1575410809762</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1575410809762</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,13 +283,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implement basic Proof of Work functionality." />
     <MESSAGE value="Add block validation with tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add block validation with tests." />
+    <MESSAGE value="Add chain replacement with validation and tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add chain replacement with validation and tests." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Cryptocurrency$pytest_for_backend.coverage" NAME="pytest for backend.tests Coverage Results" MODIFIED="1575323001682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Cryptocurrency$hex_to_binary.coverage" NAME="hex_to_binary Coverage Results" MODIFIED="1575322422104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/tests/util" />
     <SUITE FILE_PATH="coverage/Cryptocurrency$average_block_rate.coverage" NAME="average_block_rate Coverage Results" MODIFIED="1575322586711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/scripts" />
+    <SUITE FILE_PATH="coverage/Cryptocurrency$app_PEER.coverage" NAME="app PEER Coverage Results" MODIFIED="1575488742914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Cryptocurrency$pytest_for_backend_tests.coverage" NAME="pytest for backend.tests Coverage Results" MODIFIED="1575410724072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Cryptocurrency$app.coverage" NAME="app Coverage Results" MODIFIED="1575488501917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Cryptocurrency$block.coverage" NAME="block Coverage Results" MODIFIED="1575400127944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/blockchain" />
   </component>
 </project>

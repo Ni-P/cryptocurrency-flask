@@ -33,6 +33,13 @@ class Blockchain:
 
         self.chain = chain
 
+    def to_json(self):
+        """
+        Serialize the blockchain to JSON
+        :return:
+        """
+        return list(map(lambda block: block.to_json(), self.chain))
+
     @staticmethod
     def is_valid_chain(chain):
         """
@@ -44,9 +51,22 @@ class Blockchain:
         :return:
         """
         if chain[0] != Block.genesis():
+            print(str(chain[0]))
             raise Exception('Genesis block must be valid')
 
         for i in range(1, len(chain)):
             block = chain[i]
             last_block = chain[i - 1]
             Block.is_valid_block(last_block, block)
+
+    @staticmethod
+    def from_json(chain_json):
+        """
+        Deserialize a list of serialized blocks into a Blockchain instance
+        :param chain_json:
+        :return:
+        """
+        blockchain = Blockchain()
+        blockchain.chain = list(map(lambda block: Block.from_json(block), chain_json))
+
+        return blockchain

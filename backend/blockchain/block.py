@@ -42,6 +42,13 @@ class Block:
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
 
+    def to_json(self):
+        """
+        Serialize the Block to JSON
+        :return:
+        """
+        return self.__dict__
+
     @staticmethod
     def mine_block(last_block, data):
         """
@@ -72,6 +79,15 @@ class Block:
         return Block(**GENESIS_DATA)
 
     @staticmethod
+    def from_json(block_json):
+        """
+        Deserialize a JSON Block to a Block object
+        :param block_json:
+        :return:
+        """
+        return Block(**block_json)
+
+    @staticmethod
     def adjust_difficulty(last_block, new_timestamp):
         """
         Calculate adjusted difficulty according to the MINE_RATE
@@ -100,12 +116,15 @@ class Block:
         :return:
         """
         if block.last_hash != last_block.hash:
+            print(str(block))
             raise Exception('The block last_hash must be correct')
 
         if hex_to_binary(block.hash)[0:block.difficulty] != '0' * block.difficulty:
+            print(str(block))
             raise Exception("The PoW was not met")
 
         if abs(last_block.difficulty - block.difficulty) > 1:
+            print(str(block))
             raise Exception("Difficulty must adjust by one")
 
         reconstructed_hash = crypto_hash(
@@ -120,6 +139,7 @@ class Block:
         # print(last_block)
         # print(reconstructed_hash)
         if block.hash != reconstructed_hash:
+            print(str(block))
             raise Exception("The block hash must be correct")
 
 

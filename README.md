@@ -17,3 +17,16 @@ With the venv active:
 ```bash
 python -m pytest backend.tests
 ```
+
+**Run the App and API**
+
+```bash
+python3 -m backend.app
+```
+
+**Run a peer instance**
+
+```bash
+export PEER=True && python3 -m backend.app
+```
+
