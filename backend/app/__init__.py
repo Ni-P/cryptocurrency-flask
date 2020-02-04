@@ -45,6 +45,8 @@ def route_wallet_transact():
     transaction_data = request.get_json()
     transaction = Transaction(wallet, transaction_data['recipient'], transaction_data['amount'])
 
+    print(f'transaction.to_json(): {transaction.to_json()}')
+
     return jsonify(transaction.to_json())
 
 
@@ -63,4 +65,4 @@ if os.environ.get('PEER') == 'True':
     except Exception as e:
         print(f"\n -- Failed to sync local chain, {e}")
 
-app.run(port=PORT)
+app.run(port=PORT, host='0.0.0.0')  # host param allow external connections from other machines in debug mode
