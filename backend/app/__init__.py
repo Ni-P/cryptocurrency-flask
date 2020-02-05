@@ -1,18 +1,20 @@
-import random
-
-from flask import Flask, jsonify, request
 import os
+from random import randint
+
 import requests
+from flask import Flask, jsonify, request
 
 from backend.blockchain.blockchain import Blockchain
-from backend.wallet.transaction import Transaction
-from backend.wallet.wallet import Wallet
 from backend.pubsub import PubSub
+from backend.wallet.transaction import Transaction
+from backend.wallet.transaction_pool import TransactionPool
+from backend.wallet.wallet import Wallet
 
 app = Flask(__name__)
 blockchain = Blockchain()
 wallet = Wallet()
-pubsub = PubSub(blockchain)
+transaction_pool = TransactionPool()
+pubsub = PubSub(blockchain, transaction_pool)
 
 for i in range(3):
     blockchain.add_block(i)
@@ -20,7 +22,7 @@ for i in range(3):
 
 @app.route('/')
 def default():
-    return'Welcome to the blockchain'
+    return 'Welcome to the blockchain'
 
 
 @app.route('/blockchain')
@@ -43,9 +45,22 @@ def route_blockchain_mine():
 @app.route('/wallet/transact', methods=['POST'])
 def route_wallet_transact():
     transaction_data = request.get_json()
-    transaction = Transaction(wallet, transaction_data['recipient'], transaction_data['amount'])
+    transaction = transaction_pool.existing_transaction(wallet.address)
 
-    print(f'transaction.to_json(): {transaction.to_json()}')
+    if transaction:
+        transaction.update(
+            wallet,
+            transaction_data['recipient'],
+            transaction_data['amount']
+        )
+    else:
+        transaction = Transaction(
+            wallet,
+            transaction_data['recipient'],
+            transaction_data['amount']
+        )
+
+    pubsub.broadcast_transaction(transaction)
 
     return jsonify(transaction.to_json())
 
@@ -54,7 +69,7 @@ ROOT_PORT = 5000
 PORT = ROOT_PORT
 
 if os.environ.get('PEER') == 'True':
-    PORT = random.randint(5001, 6000)
+    PORT = randint(5001, 6000)
     result = requests.get(f'http://localhost:{ROOT_PORT}/blockchain')
     print(f"result: {result.json()}")
 
