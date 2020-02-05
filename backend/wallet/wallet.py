@@ -1,10 +1,11 @@
 import json
 from uuid import uuid4
+
+from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives.asymmetric.utils import encode_dss_signature, decode_dss_signature
-from cryptography.hazmat.primitives import hashes, serialization
-from cryptography.exceptions import InvalidSignature
 
 from backend.config import STARTING_BALANCE
 
@@ -15,12 +16,16 @@ class Wallet:
     Keeps track of balance and allows miner to auth transacions
     """
 
-    def __init__(self):
+    def __init__(self, blockchain=None):
+        self.blockchain = blockchain
         self.address = str(uuid4())[0:8]
-        self.balance = STARTING_BALANCE
         self.private_key = ec.generate_private_key(ec.SECP256K1, default_backend())
         self.public_key = self.private_key.public_key()
         self.serialize_public_key()
+
+    @property
+    def balance(self):
+        return Wallet.calculate_balance(self.blockchain, self.address)
 
     def sign(self, data):
         """
@@ -64,6 +69,32 @@ class Wallet:
         except InvalidSignature as e:
             print(e)
             return False
+
+    @staticmethod
+    def calculate_balance(blockchain, address):
+        """
+        Calculate balance of the given address considering the transaction data within the blockchain
+
+        The blanca is found by adding the output values that belong to this address since the most
+        recent transaction by that address
+        :param blockchain:
+        :param address:
+        :return:
+        """
+        balance = STARTING_BALANCE
+
+        if not blockchain:
+            return balance
+
+        for block in blockchain.chain:
+            for transaction in block.data:
+                if transaction['input']['address'] == address:
+                    #  any time the address conducts a new transaction it resets the balance
+                    balance = transaction['output'][address]
+                elif address in transaction['output']:
+                    balance += transaction['output'][address]
+
+        return balance
 
 
 def main():

@@ -12,12 +12,13 @@ from backend.wallet.wallet import Wallet
 
 app = Flask(__name__)
 blockchain = Blockchain()
-wallet = Wallet()
+wallet = Wallet(blockchain)
 transaction_pool = TransactionPool()
 pubsub = PubSub(blockchain, transaction_pool)
 
-for i in range(3):
-    blockchain.add_block(i)
+
+# for i in range(3):
+#     blockchain.add_block(i)
 
 
 @app.route('/')
@@ -32,14 +33,16 @@ def route_blockchain():
 
 @app.route('/blockchain/mine')
 def route_blockchain_mine():
-    transaction_data = 'stub_tra_data'
-
+    transaction_data = transaction_pool.transaction_data()
+    transaction_data.append(Transaction.reward_transaction(wallet).to_json())
     blockchain.add_block(transaction_data)
-
     block = blockchain.chain[-1]
     pubsub.broadcast_block(block)
+    transaction_pool.clear_blockchain_transactions(blockchain)
 
-    return jsonify(block.to_json())
+    temp = block.to_json()
+
+    return jsonify(temp)
 
 
 @app.route('/wallet/transact', methods=['POST'])
@@ -63,6 +66,11 @@ def route_wallet_transact():
     pubsub.broadcast_transaction(transaction)
 
     return jsonify(transaction.to_json())
+
+
+@app.route('/wallet/info')
+def route_wallet_info():
+    return jsonify({'address': wallet.address, 'balance': wallet.balance})
 
 
 ROOT_PORT = 5000
