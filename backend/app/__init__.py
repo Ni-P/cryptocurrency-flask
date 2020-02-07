@@ -3,6 +3,7 @@ from random import randint
 
 import requests
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 from backend.blockchain.blockchain import Blockchain
 from backend.pubsub import PubSub
@@ -11,6 +12,7 @@ from backend.wallet.transaction_pool import TransactionPool
 from backend.wallet.wallet import Wallet
 
 app = Flask(__name__)
+CORS(app, resources={r'/*': {'origins': 'http://localhost:3000'}})
 blockchain = Blockchain()
 wallet = Wallet(blockchain)
 transaction_pool = TransactionPool()
@@ -19,7 +21,11 @@ pubsub = PubSub(blockchain, transaction_pool)
 
 # for i in range(3):
 #     blockchain.add_block(i)
-
+# @blueprint.after_request # blueprint can also be app~~
+# def after_request(response):
+#     header = response.headers
+#     header['Access-Control-Allow-Origin'] = '*'
+#     return response
 
 @app.route('/')
 def default():
@@ -70,6 +76,9 @@ def route_wallet_transact():
 
 @app.route('/wallet/info')
 def route_wallet_info():
+    # response = make_response(jsonify({'address': wallet.address, 'balance': wallet.balance}))
+    # response.headers.add("Access-Control-Allow-Origin", "*")
+    # return response
     return jsonify({'address': wallet.address, 'balance': wallet.balance})
 
 
